@@ -8,7 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Place> attractions = [
+  List<Place> places = [
     Place(
       id: 1,
       name: 'Kuwait Tower & Kuwait Scientific Center Tour',
@@ -64,10 +64,10 @@ class _HomePageState extends State<HomePage> {
   bool showingList = true;
 
   void toggleLiked(int id) {
-    for (var i = 0; i < attractions.length; i++) {
-      if (attractions[i].id == id) {
+    for (var i = 0; i < places.length; i++) {
+      if (places[i].id == id) {
         setState(() {
-          attractions[i].isLiked = !attractions[i].isLiked;
+          places[i].isLiked = !places[i].isLiked;
 
           // if (attractions[i].isLiked == true) {
           //   attractions[i].isLiked = false;
@@ -84,29 +84,29 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: myAppBar(),
       // make it listview
-      body: placeCard(0),
+      body: placeCard(places[0]),
 
       // bottomNavigationBar: ,
     );
   }
 
-  Padding placeCard(int i) {
+  Padding placeCard(Place place) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
         child: ListTile(
           leading: Image.network(
-            attractions[i].images[0],
+            place.images[0],
           ),
-          title: Text(attractions[i].name),
-          subtitle: Text('price: ${attractions[i].price} - rating: ${attractions[i].rating}'),
+          title: Text(place.name),
+          subtitle: Text('price: ${place.price} - rating: ${place.rating}'),
           trailing: IconButton(
             onPressed: () {
-              int id = attractions[i].id;
+              int id = place.id;
               toggleLiked(id);
             },
             icon: Icon(
-              attractions[i].isLiked == true ? Icons.favorite : Icons.favorite_border,
+              place.isLiked == true ? Icons.favorite : Icons.favorite_border,
               color: Colors.pink,
             ),
           ),
