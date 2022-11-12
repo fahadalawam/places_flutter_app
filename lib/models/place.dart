@@ -1,4 +1,4 @@
-class Attraction {
+class Place {
   int id;
   String name;
   List<String> images;
@@ -6,7 +6,7 @@ class Attraction {
   double rating;
   bool isLiked;
 
-  Attraction({
+  Place({
     required this.id,
     required this.name,
     required this.images,
