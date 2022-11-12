@@ -98,6 +98,8 @@ class _HomePageState extends State<HomePage> {
           leading: Image.network(
             attractions[i].images[0],
           ),
+          title: Text(attractions[i].name),
+          subtitle: Text('price: ${attractions[i].price} - rating: ${attractions[i].rating}'),
           trailing: IconButton(
             onPressed: () {
               int id = attractions[i].id;
@@ -108,8 +110,6 @@ class _HomePageState extends State<HomePage> {
               color: Colors.pink,
             ),
           ),
-          title: Text(attractions[i].name),
-          subtitle: Text('price: ${attractions[i].price} - rating: ${attractions[i].rating}'),
         ),
       ),
     );
