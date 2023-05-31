@@ -68,12 +68,6 @@ class _HomePageState extends State<HomePage> {
       if (places[i].id == id) {
         setState(() {
           places[i].isLiked = !places[i].isLiked;
-
-          // if (attractions[i].isLiked == true) {
-          //   attractions[i].isLiked = false;
-          // } else {
-          //   attractions[i].isLiked = true;
-          // }
         });
       }
     }
