@@ -4,7 +4,6 @@ class Place {
   List<String> images;
   double price;
   double rating;
-  bool isLiked;
 
   Place({
     required this.id,
@@ -12,6 +11,5 @@ class Place {
     required this.images,
     required this.price,
     required this.rating,
-    this.isLiked = false,
   });
 }

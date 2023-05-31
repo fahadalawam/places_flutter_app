@@ -61,68 +61,33 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
 
-  bool showingList = true;
-
-  void toggleLiked(int id) {
-    for (var i = 0; i < places.length; i++) {
-      if (places[i].id == id) {
-        setState(() {
-          places[i].isLiked = !places[i].isLiked;
-        });
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(),
-      // make it listview
+      appBar: AppBar(
+        title: Text('Places app'),
+      ),
+      // make a Listview
       body: placeCard(places[0]),
-
-      // bottomNavigationBar: ,
     );
   }
 
-  Padding placeCard(Place place) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
+  Widget placeCard(Place place) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: ListTile(
           leading: Image.network(
             place.images[0],
           ),
           title: Text(place.name),
           subtitle: Text('price: ${place.price} - rating: ${place.rating}'),
-          trailing: IconButton(
-            onPressed: () {
-              int id = place.id;
-              toggleLiked(id);
-            },
-            icon: Icon(
-              place.isLiked == true ? Icons.favorite : Icons.favorite_border,
-              color: Colors.pink,
-            ),
-          ),
+          //  navigate to the next page
+          onTap: () {
+            print('go to next page');
+          },
         ),
       ),
-    );
-  }
-
-  AppBar myAppBar() {
-    return AppBar(
-      actions: [
-        IconButton(
-          onPressed: () {
-            setState(() {
-              showingList = !showingList;
-            });
-          },
-          icon: Icon(
-            showingList ? Icons.list : Icons.grid_view_rounded,
-          ),
-        )
-      ],
     );
   }
 }
